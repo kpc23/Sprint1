@@ -8,13 +8,15 @@ package simulator;
  */
 public class IteratedPrisonersDilemma extends Game
 {
-	private int maxRounds;
+	int maxRounds;
+
 	/**
-	 * 
+	 * constructor - IPD has 2 choices of actions.
 	 */
 	public IteratedPrisonersDilemma(int maxRounds)
 	{
 		this.maxRounds = maxRounds;
+		actions = 2;
 	}
 
 	@Override
@@ -24,22 +26,31 @@ public class IteratedPrisonersDilemma extends Game
 	}
 
 	@Override
-	public int[] scoreActions(int action1, int action2)
+	public void scoreActions(int action1, int action2)
 	{
-		//0 -> selfless, 1 ->selfish
-		if(action1 == 0 && action2 == 0) {
-			return new int[] {3,3};
+		// 0 -> cooperate, 1 ->defect
+		if (action1 == 0 && action2 == 0)
+		{
+			currentState.p1Score += 3;
+			currentState.p2Score += 3;
+		} 
+		if (action1 == 1 && action2 == 0)
+		{
+			currentState.p1Score += 5;
+			currentState.p2Score += 0;
+
+		} 
+		if (action1 == 0 && action2 == 1)
+		{
+			currentState.p1Score += 0;
+			currentState.p2Score += 5;
+
+		} 
+		if (action1 == 1 && action2 == 1)
+		{
+			currentState.p1Score += 1;
+			currentState.p2Score += 1;
 		}
-		
-		if(action1 == 1 && action2 == 0) {
-			return new int[] {5,0};
-		}
-		
-		if(action1 == 0 && action2 == 1) {
-			return new int[] {0,5};
-		}
-		
-		return new int[]{1,1};
 	}
 
 }

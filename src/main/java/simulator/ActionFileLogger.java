@@ -4,16 +4,20 @@
 package simulator;
 
 /**
- * 
+ * Actions from players from each round in a game.
  */
-public class ActionFileLogger implements Observer
+public class ActionFileLogger extends Observer
 {
+	String messageUpdate; 
+	public String getMessage() {
+		return messageUpdate;
+	}
 	@Override
-	public void update(Game game)
+	public void update(Subject subject)
 	{
-		State s = game.getCurrentState();
-		System.out.println("Round " + (game.roundsTaken+1) + ": " + s.p1Name +" = " 
-		+ s.p1Action + " VS " + s.p2Name + " = " + s.p2Action);
-
+		Game game = (Game) subject;
+		State s = game.currentState;
+		messageUpdate = "Round " + (s.round+1) + " PLAYER 1 ACTION = " + s.p1Action + " || PLAYER 2 ACTION = " + s.p2Action;
+		System.out.println(messageUpdate);
 	}
 }

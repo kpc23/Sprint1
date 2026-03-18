@@ -3,22 +3,19 @@
  */
 package simulator;
 
-import java.util.List;
+import java.util.ArrayList;
 
 /**
  * 
  */
 public abstract class Bracket
 {
-	List<TourneyPlayer> players;
+	ArrayList<TourneyPlayer> participantList;
 
-	/**
-	 * Constructor
-	 * @param players
-	 */
-	public Bracket(List<TourneyPlayer> players)
+	public Bracket(ArrayList<TourneyPlayer> players)
 	{
-		this.players = players;
+		this.participantList = players;
 	}
-	public abstract List<TourneyPlayer[]> getPairs();
+
+	public abstract Tuple nextPair(State state);
 }

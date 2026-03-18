@@ -4,15 +4,27 @@
 package simulator;
 
 import java.util.ArrayList;
-import java.util.List;
 
-/**
- * 
- */
-public interface Participant
+public abstract class Participant
 {
-	String getName();
-	int makeChoice(int round);
-	void addMemory(State state);
-	void clearMemory();
+	String name;
+	ArrayList<State> memory;
+
+	public Participant(String name)
+	{
+		this.name = name;
+		this.memory = new ArrayList<>();
+	}
+
+	public void addMemory(State state)
+	{
+		memory.add(state);
+	}
+
+	abstract int makeChoice(int actions);
+
+	public void clearMemory()
+	{
+		memory.clear();
+	}
 }

@@ -3,50 +3,31 @@
  */
 package simulator;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
- * 
+ * returns 0 or 1 depending on what it chose previously. thus alternating.
  */
-public class AlternatingBot implements Participant
+public class AlternatingBot extends Participant
 {
-	private String name;
-	private List<State> memory = new ArrayList<>();
+	int previousChoice = 0;
 
-	/**
-	 * 
-	 */
 	public AlternatingBot(String name)
 	{
-		this.name = name;
+		super(name);
+		// TODO Auto-generated constructor stub
 	}
 
 	@Override
-	public String getName()
-	{
-		return name;
-	}
-
-	@Override
-	public int makeChoice(int round)
+	int makeChoice(int actions)
 	{
 		// TODO Auto-generated method stub
-		return round % 2; //alternate
-	}
+		if (previousChoice == 0)
+		{
+			previousChoice = 1;
+		} else
+		{
+			previousChoice = 0;
+		}
 
-	@Override
-	public void addMemory(State state)
-	{
-		// TODO Auto-generated method stub
-		memory.add(state);
+		return previousChoice;
 	}
-
-	@Override
-	public void clearMemory()
-	{
-		// TODO Auto-generated method stub
-		memory.clear();
-	}
-
 }

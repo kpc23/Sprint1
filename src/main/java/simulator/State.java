@@ -8,14 +8,7 @@ package simulator;
  */
 public class State
 {
-	public String p1Name;
-	public int p1Score;
-	public int p1Action;
-	
-	public String p2Name;
-	public int p2Score;
-	public int p2Action;
-	
+
 	/**
 	 * @param p1Name
 	 * @param p1Score
@@ -23,18 +16,31 @@ public class State
 	 * @param p2Name
 	 * @param p2Score
 	 * @param p2Action
+	 * @param round
 	 */
-	public State(String p1Name, int p1Score, int p1Action, 
-				String p2Name, int p2Score, int p2Action)
+	public State(State state)
 	{
-		this.p1Name = p1Name;
-		this.p1Score = p1Score;
-		this.p1Action = p1Action;
-		this.p2Name = p2Name;
-		this.p2Score = p2Score;
-		this.p2Action = p2Action;
+		this.p1Name = state.p1Name;
+		this.p1Score = state.p1Score;
+		this.p1Action = state.p1Action;
+		this.p2Name = state.p2Name;
+		this.p2Score = state.p2Score;
+		this.p2Action = state.p2Action;
+		this.round = state.round;
 	}
 
-	
+	public State()
+	{
+		// TODO Auto-generated constructor stub
+	}
 
+	public String p1Name;
+	public int p1Score;
+	public int p1Action;
+
+	public String p2Name;
+	public int p2Score;
+	public int p2Action;
+
+	public int round;
 }

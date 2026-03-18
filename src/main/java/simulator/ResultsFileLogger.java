@@ -4,17 +4,21 @@
 package simulator;
 
 /**
- * 
+ * result
  */
-public class ResultsFileLogger implements Observer
+public class ResultsFileLogger extends Observer
 {
+	String messageUpdate; 
+	public String getMessage() {
+		return messageUpdate;
+	}
 	@Override
-	public void update(Game game)
+	void update(Subject subject)
 	{
-		State s = game.getCurrentState();
-		System.out.println("Score: " + s.p1Name +"-" 
-		+ s.p1Score + " vs " + s.p2Name + "-" + s.p2Score);
-
+		Game game = (Game) subject;
+		State s = game.currentState;
+		messageUpdate = "Game Score Result: " + s.p1Score + " vs " + s.p2Score;
+		System.out.println(messageUpdate);
 	}
 
 }

@@ -6,8 +6,8 @@ package simulator;
 /**
  * 
  */
-public interface Observer
+public abstract class Observer
 {
-	void update (Game game);
+	abstract void update(Subject subject);
 
 }

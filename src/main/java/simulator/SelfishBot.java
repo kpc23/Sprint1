@@ -3,50 +3,24 @@
  */
 package simulator;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * 
  */
-public class SelfishBot implements Participant
+public class SelfishBot extends Participant
 {
-	private String name;
-	private List<State> memory = new ArrayList<>();
-
-	/**
-	 * 
-	 */
 	public SelfishBot(String name)
 	{
-		this.name = name;
+		super(name);
+		// TODO Auto-generated constructor stub
 	}
 
+	/**
+	 * Selfish bot will return 1.
+	 */
 	@Override
-	public String getName()
-	{
-		return name;
-	}
-
-	@Override
-	public int makeChoice(int round)
+	int makeChoice(int actions)
 	{
 		// TODO Auto-generated method stub
 		return 1;
 	}
-
-	@Override
-	public void addMemory(State state)
-	{
-		// TODO Auto-generated method stub
-		memory.add(state);
-	}
-
-	@Override
-	public void clearMemory()
-	{
-		// TODO Auto-generated method stub
-		memory.clear();
-	}
-
 }
