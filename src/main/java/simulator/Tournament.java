@@ -28,6 +28,9 @@ public class Tournament
 
 	public void registerPlayer(Participant player)
 	{
+		if(player == null) {
+			throw new IllegalArgumentException("Invalid player");
+		}
 		scoreboard.add(new TourneyPlayer(player));
 	}
 

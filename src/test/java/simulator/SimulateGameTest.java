@@ -31,11 +31,11 @@ class SimulateGameTest
 		Participant p1 = new SelfishBot("selfish");
 		Participant p2 = new SelflessBot("selfless");
 		Participant p3 = new AlternatingBot("alternating");
-
+		
 		tournament.registerPlayer(p1);
 		tournament.registerPlayer(p2);
 		tournament.registerPlayer(p3);
-
+		
 		assertEquals(3, players.size());
 		assertEquals("selfish", players.get(0).player.name);
 		assertEquals("selfless", players.get(1).player.name);
@@ -63,6 +63,7 @@ class SimulateGameTest
 		
 		ActionFileLogger actionLogger = new ActionFileLogger();
 		ResultsFileLogger resultsLogger = new ResultsFileLogger();
+		
 		game.register(actionLogger);
 		game.register(resultsLogger);
 		game.play(p1, p2);
@@ -88,6 +89,23 @@ class SimulateGameTest
 		assertDoesNotThrow(()-> {
 			sg.main(args);
 		});
+	}
+	
+	/**
+	 * test exceptions
+	 */
+	@Test
+	void exceptionTest() {
+		Game game = new IteratedPrisonersDilemma(2);
+		Participant p1 = new SelfishBot("selfish");
+
+		assertThrows(IllegalArgumentException.class, () -> game.play(p1,  null));
+		
+		ArrayList<TourneyPlayer> players = new ArrayList<>();
+		Bracket bracket = new RoundRobinBracket(players);
+		Tournament tournament = new Tournament(players, game, bracket);
+
+		assertThrows(IllegalArgumentException.class, () -> tournament.registerPlayer(null));
 	}
 
 }

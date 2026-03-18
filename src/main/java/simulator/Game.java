@@ -23,6 +23,9 @@ public abstract class Game extends Subject
 	 */
 	public void play(Participant p1, Participant p2)
 	{
+		if(p1 == null || p2 == null) {
+			throw new IllegalArgumentException("Invalid player");
+		}
 		currentState = new State();
 		
 		roundsTaken = 0;

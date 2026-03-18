@@ -1,5 +1,5 @@
 /**
- * 
+ * Strategic Interaction Tournament Simulator (SITS)
  */
 package simulator;
 
